@@ -33,7 +33,6 @@
       @State = [State],
       @PostalCode = PostalCode
     FROM dbo.[Address]
-    --where [State] != 'CA'
     ORDER BY NEWID()
 
 
@@ -43,10 +42,7 @@
     /*--------------------------assign a random frequency -----------------------------------*/
 
     DECLARE @Frequency int = ABS(CHECKSUM(NEWID()) % 19) + 1 /* set a random frequency from 1-20 that a customer will shop */
-    --set @Frequency = 1 /*------------------------------------------------using 1 now-----------------------------------------------*/
     FETCH NEXT FROM insert_cursor INTO @UserId
-
-    PRINT @Frequency
 
     WHILE (@Frequency > 0)
     BEGIN
@@ -67,10 +63,6 @@
       SET @ProductId = 165
 
       SET @Quantity = ABS(CHECKSUM(NEWID()) % 2) /*decide to buy or not*/
-
-      PRINT @UserId
-      PRINT @ProductId
-      PRINT @Quantity
 
       DECLARE @Cost decimal(18, 2)
       SELECT
