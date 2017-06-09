@@ -22,7 +22,8 @@ BEGIN
 		  [Year],
 		  Title,
 		  ProductType
-		FROM (SELECT
+		FROM 
+		(SELECT
 		  ProductId,
 		  SUM(Quantity) AS NumberOfSales,
 		  SUM(Cost) AS Revenue,
