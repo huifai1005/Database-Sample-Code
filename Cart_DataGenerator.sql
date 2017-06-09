@@ -37,8 +37,8 @@
     ORDER BY NEWID()
 
 
-    /*insert into dbo.[Address] (Line1,Line2,City,[State],PostalCode,Active,CreatedBy,ModifiedBy) values(@Line1,@Line2,@City,@State,@PostalCode,1,@UserId,@UserId)
-		set @AddressId = SCOPE_IDENTITY()*/
+    insert into dbo.[Address] (Line1,Line2,City,[State],PostalCode,Active,CreatedBy,ModifiedBy) values(@Line1,@Line2,@City,@State,@PostalCode,1,@UserId,@UserId)
+		set @AddressId = SCOPE_IDENTITY()
 
     /*--------------------------assign a random frequency -----------------------------------*/
 
@@ -84,7 +84,7 @@
       BEGIN
 
         INSERT INTO dbo.Cart
-          VALUES (@UserId, @ProductId, @Quantity, @Cost, @date, @date)
+          VALUES (@UserId, @ProductId, @Quantity, @Cost, @Date, @Date)
         SET @CartId = SCOPE_IDENTITY()
 
         INSERT INTO dbo.Cart_Address (CartId, AddressId)
